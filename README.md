@@ -1,83 +1,14 @@
 ## WARNING 
 
-This code can't cope environment with continuous action
+No long-term updates.
 
-## How to use
+The code is messy and I won't sort it out.
 
-### train
+Although it may pass the school inspection, I am not satisfied with it.
 
-`python3 run.py`
+This project is base on [tf2-PPO-atari](https://github.com/UesugiErii/tf2-PPO-atari)
 
-### test
+Latter may be updated forever.
 
-move pong or breakout's weight to ./logs/weight
+All train data and weigh at [百度网盘](https://pan.baidu.com/s/1XGuLEAndYp7w5rfRb-w12Q) (bc5q)
 
-modify index to select weight which you want to use
-
-`python3 test_and_show.py`
-
-## Environment
-
-tensorflow-gpu (2.0.0a0)  
-numpy (1.16.4)  
-gym (0.13.1)  
-
-## Speed
-
-1070ti(1607Mhz), ryzen1700(OC 3.7), DDR4 2933MHz(14-17-17-35)
-
-|Network|Env|Learning times per second|Step per second(total core)|
-| :---: | :-----:  | :-----: | :-----: |
-| CNN | breakout | 2.186     | 2238 |
-| RNN | breakout | 2.525     | 2586 |
-| CNN | pong     | 2.519     | 2579 |
-| RNN | pong     | 2.718     | 2783 |
-
-## Program structure
-
-![](./structure.PNG)
-
-environment.py used to create a environment that let agent do something , you can also customize the environment , like process state to speed up convergence
-
-agent.py contain a agent , as an intermediary to communicate with brain
-
-brain.py collect data from agent , give data to model after processing like one-hot and calc adv,realv.....
-
-model.py calculate gradient , also record experimental data at the same time
-
-config.py contain all hyperparameters
-
-communication.py generate a master and many children , master and children let agent can communicate with brain(exchange data)
-
-test_and_show.py can load weight and run , you can use this to watch AI play atari game
-
-## Algorithm
-
-Proximal Policy Optimization Algorithms
-
-origin paper : https://arxiv.org/abs/1707.06347
-
-There are some different between my code and paper
-
-GAE paper : https://arxiv.org/abs/1506.02438
-
-
-## Why do this ?
-
-1 . As the initial version of the graduation design , as an initial template
-
-2 . baseline is too complicated , I can't fully understand
-
-3 . Stable Baselines' integration is too high , can't be used to graduation design
-
-So I wrote this project that is easy to understand
-
-## logs dir explanation
-
-|dir|env|optimizers|GAE|Network|
-| :----------: | :-----------:  | :-----------: | :-----------: | :-----------: |
-| 20190904-021336     | breakout     | RMSprop     | False     | CNN |
-| 20190905-000303     | breakout     | Adam     | False     | CNN |
-| 20190913-154820     | pong     | Adam     | False     | CNN |
-| 20190914-175108     | pong     | Adam     | True     | CNN |
-| 20190918-071729     | pong     | Adam     | True     | RNN |
